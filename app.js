@@ -1,28 +1,24 @@
-//Adding Express, Path, Mongoose Modele Depedenecies.
-const express = require('express');
-const path = require('path');
-const db = require('./config/mongoose.js');
-const port = process.env.port || 8000;
-const host = '127.0.0.1';
+//import all required packages
+const express = require("express");
 const app = express();
+const port = 9000;
+const db = require("./config/mongoose");
 
-// Middleware for parsing URL-encoded form data
+//middleware for parsing data into url encoded format
 app.use(express.urlencoded({ extended: false }));
-
-//Adding Router Handler Here 
-app.use('/', require('./routes'));
-
-// Serve Static Files
 app.use(express.static(__dirname + '/public'));
+//route handler
+const routes = require("./routes/tasks");
+app.use("/", routes);
 
-// Set the 'view engine' setting to 'ejs'
-app.set('view engine', 'ejs');
-app.set('views', './views');
+//set up view engine
+app.set("view engine", "ejs");
+app.set("views", "./views");
 
-// Start The Server
-app.listen(port, host, (err)=>{
-    if(err){
-        console.log(`Server Error ${err} `);
-    }
-    console.log(`Server Running at http://${host}:${port}`);
-})
+//start the server
+app.listen(port, (err) => {
+  if (err) {
+    console.log("Server Error", err);
+  }
+  console.log(`Server running on port ${port}`);
+});

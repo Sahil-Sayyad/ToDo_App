@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <!-- linking css stylesheets  -->
+    <link rel="stylesheet" href="/stylesheets/task.css" />
+  </head>
+  <body>
+    <main>
+      <div class="container">
+        <h1>TODO App</h1>
+        <div class="formData">
+          <form action="/create" method="post">
+            <div class="description">
+              <label for="description">DESCRIPTION</label><br />
+              <input
+                type="text"
+                name="description"
+                placeholder="What do you need to do?"
+                required
+              />
+            </div>
+            <div class="catandDue">
+              <div>
+                <label for="catagory">CATEGORY</label><br />
+                <select name="catagory" id="catagory" selected>
+                  <option value="Choose a Catagory">Choose a Catagory</option>
+                  <option value="school">School</option>
+                  <option value="college">College</option>
+                  <option value="home">Home</option>
+                  <option value="office">Office</option>
+                </select>
+              </div>
+              <div class="duedate">
+                <label for="duedate">DUE DATE</label>
+                <input type="date" name="duedate" />
+              </div>
+            </div>
+            <div class="btn">
+              <input type="submit" value="Add Task" />
+            </form>
+              <button>Delete Task</button>
+            </div>
+        </div>
+
+        <div class="grid-container">
+        <% for(let taskData of data){ %>
+            <div class="grid-item"><%=taskData.description%> </div>
+            <div class="grid-item"><%=taskData.duedate%></div>
+            <div class="grid-item"> <%=taskData.catagory%></div>
+            <div class="grid-item"><a href="/edit/<%=taskData._id %>">Edit</a></div>
+            <div class="grid-item"><a href="/delete/<%=taskData._id %>"><input type="checkbox"></a></div>
+            <%} %>
+          </div>
+      </div>
+    </main>
+  </body>
+</html>

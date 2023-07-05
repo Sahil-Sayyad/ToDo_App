@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/update.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>TODO App</h1>
+      <div class="formData">
+        <% for(let taskData of data ){ %> <% if(id == taskData._id){ %>
+          <form action="/update/<%= taskData._id  %>" method="post">
+          <div class="description">
+            <label for="description">DESCRIPTION</label><br />
+            <input
+              type="text"
+              name="description"
+              placeholder="What do you need to do?"
+              value="<%=taskData.description%>"
+              required
+            />
+          </div>
+          <div class="catandDue">
+            <div>
+              <label for="catagory">CATEGORY</label><br />
+              <select name="catagory" id="catagory" selected     value="<%=taskData.catagory%>">
+                <option value="Choose a Catagory">Choose a Catagory</option>
+                <option value="school">School</option>
+                <option value="college">College</option>
+                <option value="home">Home</option>
+                <option value="office">Office</option>
+              </select>
+            </div>
+            <div class="duedate">
+              <label for="duedate">DUE DATE</label>
+              <input type="date" name="duedate" value="<%=taskData.duedate%>"/>
+            </div>
+          </div>
+          <div class="btn">
+            <input type="submit" value="Update Task" />
+          </div>
+        </form>
+        
+      <% } %> <% } %>
+      </div>
+  </body>
+</html>
