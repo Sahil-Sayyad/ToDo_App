@@ -1,6 +1,6 @@
-# Contact List App using Node.js | Express.js | MongoDB
+# To Do App using Node.js | Express.js | MongoDB
 
-    -This is a repository for Contact List  App  Developed using Node.js,Express.js, mongoDB, HTML, CSS.
+    -This is a repository for To Do  App  Developed using Node.js,Express.js, mongoDB, HTML, CSS.
     -It is developed to create a soothing Experience with powerful features and clean interface.
   <br>
 
